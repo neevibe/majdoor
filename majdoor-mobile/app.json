@@ -1,0 +1,70 @@
+{
+  "expo": {
+    "name": "MAJDOOR",
+    "slug": "majdoor",
+    "version": "1.0.0",
+    "scheme": "majdoor",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "newArchEnabled": true,
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "ai.majdoor.app",
+      "infoPlist": {
+        "NSCameraUsageDescription": "MAJDOOR uses the camera for face-verified attendance, QR gate scanning and document capture.",
+        "NSLocationWhenInUseUsageDescription": "MAJDOOR uses your location to verify GPS attendance inside the site geofence and show nearby jobs.",
+        "NSFaceIDUsageDescription": "MAJDOOR uses Face ID to unlock the app securely.",
+        "NSMicrophoneUsageDescription": "MAJDOOR uses the microphone for voice questions to the AI assistant."
+      }
+    },
+    "android": {
+      "package": "ai.majdoor.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#0B0D12",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.ACCESS_FINE_LOCATION",
+        "android.permission.ACCESS_COARSE_LOCATION",
+        "android.permission.USE_BIOMETRIC",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.POST_NOTIFICATIONS"
+      ],
+      "predictiveBackGestureEnabled": true
+    },
+    "web": {
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro",
+      "output": "single"
+    },
+    "plugins": [
+      "expo-router",
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash-icon.png",
+          "imageWidth": 160,
+          "resizeMode": "contain",
+          "backgroundColor": "#0B0D12"
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#2F7CF6"
+        }
+      ],
+      "expo-local-authentication",
+      "expo-location",
+      "expo-camera",
+      "expo-font"
+    ],
+    "experiments": {
+      "typedRoutes": true
+    }
+  }
+}

@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/industry-d1842bf0-a190-4583-be1e-cf8ea1d043c2/styles.css">
+  <script src="_ds/industry-d1842bf0-a190-4583-be1e-cf8ea1d043c2/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)}
+    a{color:var(--color-accent-700);text-decoration:none}a:hover{color:var(--color-accent-900)}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    @keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+    @keyframes slideA{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+    @keyframes slideB{from{opacity:0;transform:translateX(14px)}to{opacity:1;transform:none}}
+    body{font-variant-numeric:tabular-nums}
+  </style>
+</helmet>
+<div style="display:grid;grid-template-columns:232px 1fr;min-height:100vh">
+  <aside style="background:var(--color-accent-900);color:var(--color-accent-100);display:flex;flex-direction:column;position:sticky;top:0;height:100vh;box-sizing:border-box">
+    <a href="Majdoor%20Landing.dc.html" style="display:flex;align-items:center;gap:10px;padding:18px 18px;border-bottom:1px solid var(--color-accent-700);color:var(--color-accent-100)">
+      <img src="assets/logo-mark-flat-light.png" alt="Majdoor" style="height:32px;display:block;flex:none">
+      <img src="assets/wordmark-only-t.png" alt="MAJDOOR" style="height:17px;display:block;min-width:0;max-width:100%">
+    </a>
+    <nav style="display:flex;flex-direction:column;padding:14px 10px;gap:2px;flex:1">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="7">
+        <button onClick="{{ n.go }}" style="display:flex;flex-direction:column;gap:1px;text-align:left;border:none;cursor:pointer;padding:9px 12px;font-family:var(--font-heading);font-size:15px;letter-spacing:.1em;background:{{ n.bg }};color:{{ n.fg }};border-left:2px solid {{ n.edge }};transition:background .15s ease,color .15s ease" style-hover="background:var(--color-accent-800);color:var(--color-accent-100)">
+          <span>{{ n.label }}</span><span style="font-size:10px;font-family:var(--font-body);opacity:.5;letter-spacing:.04em">{{ n.hi }}</span>
+        </button>
+      </sc-for>
+    </nav>
+    <div style="padding:18px 22px;border-top:1px solid var(--color-accent-700);font-size:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="width:32px;height:32px;border:1px solid var(--color-accent-500);display:grid;place-items:center;font-family:var(--font-heading);font-size:14px">AS</span>
+        <span><b>Anand Sinha</b><br><span style="opacity:.6">Super Admin</span></span>
+      </div>
+    </div>
+  </aside>
+  <main style="padding:0 36px 60px;min-width:0">
+    <header style="display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--color-neutral-300);margin-bottom:28px">
+      <div style="display:flex;align-items:center;gap:16px">
+        <sc-if value="{{ vProfile }}" hint-placeholder-val="{{ false }}"><button onClick="{{ goWorkers }}" class="btn btn-ghost" style="font-size:13px;flex:none">← Workers</button></sc-if>
+        <div>
+          <div style="font-size:11px;letter-spacing:.16em;color:var(--color-neutral-600)">{{ viewKicker }}</div>
+          <h1 style="font-family:var(--font-heading);font-weight:600;font-size:30px;letter-spacing:.04em;margin:2px 0 0">{{ viewTitle }}</h1>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;align-items:center">
+        <button onClick="{{ openPalette }}" style="display:flex;align-items:center;gap:8px;border:1px solid var(--color-neutral-300);background:transparent;padding:7px 12px;font-size:12px;color:var(--color-neutral-600);cursor:pointer;font-family:var(--font-body);transition:border-color .15s ease" style-hover="border-color:var(--color-accent-500)">Search or jump to… <span style="border:1px solid var(--color-neutral-300);padding:1px 5px;font-size:10px;letter-spacing:.06em">⌘K</span></button>
+        <span class="tag tag-accent" style="display:inline-flex;align-items:center;gap:6px;white-space:nowrap"><span style="width:7px;height:7px;background:#16a34a;border-radius:50%;animation:pulse 2s infinite;display:inline-block"></span>LIVE · 84,212 ON DUTY</span>
+      </div>
+    </header>
+
+    <sc-if value="{{ vDashboard }}" hint-placeholder-val="{{ true }}">
+      <div style="animation:fadeUp .25s ease">
+      <sc-for list="{{ kpiRows }}" as="row" hint-placeholder-count="2">
+        <div style="margin-bottom:16px">
+          <div style="font-size:11px;letter-spacing:.18em;color:var(--color-neutral-500);margin-bottom:8px">{{ row.kicker }}</div>
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+            <sc-for list="{{ row.items }}" as="k" hint-placeholder-count="4">
+              <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:16px 20px;height:96px;box-sizing:border-box;display:flex;flex-direction:column;justify-content:space-between;transition:box-shadow .18s ease,transform .18s ease" style-hover="box-shadow:var(--shadow-md);transform:translateY(-2px)">
+                <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+                <div style="font-size:11px;letter-spacing:.12em;color:var(--color-neutral-600);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ k.label }}</div>
+                <div style="font-family:var(--font-heading);font-size:30px;font-weight:600;line-height:1;white-space:nowrap">{{ k.value }}</div>
+                <div style="font-size:12px;color:{{ k.deltaColor }};display:flex;align-items:center;gap:5px;white-space:nowrap;overflow:hidden">
+                  <svg width="9" height="9" viewBox="0 0 10 10" style="flex:none;display:{{ k.chevDisplay }}"><path d="{{ k.chevPath }}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+                  <span style="overflow:hidden;text-overflow:ellipsis">{{ k.delta }}</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+      </div>
+      <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px;margin-top:16px">
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:22px">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;justify-content:space-between;margin-bottom:14px"><span style="font-family:var(--font-heading);font-size:18px;letter-spacing:.08em">ATTENDANCE — LAST 14 DAYS</span><span class="tag tag-outline">92.4% AVG</span></div>
+          <svg viewBox="0 0 600 180" style="width:100%;display:block" onMouseLeave="{{ tipOff }}">
+            <polyline points="{{ trendArea }}" fill="var(--color-accent-100)" stroke="none" opacity=".6"></polyline>
+            <g stroke="var(--color-neutral-300)" stroke-width="1"><line x1="0" y1="45" x2="600" y2="45"></line><line x1="0" y1="90" x2="600" y2="90"></line><line x1="0" y1="135" x2="600" y2="135"></line></g>
+            <polyline points="{{ trendPts }}" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linejoin="round"></polyline>
+            <circle cx="{{ trendEndX }}" cy="{{ trendEndY }}" r="4" fill="var(--color-accent)"></circle>
+            <circle cx="{{ trendEndX }}" cy="{{ trendEndY }}" r="8" fill="var(--color-accent)" opacity=".2"><animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite"></animate></circle>
+            <sc-if value="{{ tipHidden }}" hint-placeholder-val="{{ true }}"><text x="{{ trendLabelX }}" y="{{ trendLabelY }}" font-size="11" font-weight="600" fill="var(--color-accent-700)">92.4% today</text></sc-if>
+            <text x="4" y="40" font-size="10" fill="var(--color-neutral-500)">95%</text><text x="4" y="130" font-size="10" fill="var(--color-neutral-500)">85%</text>
+            <sc-if value="{{ tipShow }}" hint-placeholder-val="{{ false }}">
+              <line x1="{{ tipX }}" y1="0" x2="{{ tipX }}" y2="180" stroke="var(--color-accent-400)" stroke-width="1" stroke-dasharray="3 3"></line>
+              <circle cx="{{ tipX }}" cy="{{ tipY }}" r="4.5" fill="var(--color-bg)" stroke="var(--color-accent-700)" stroke-width="2"></circle>
+              <g><rect x="{{ tipBoxX }}" y="8" width="104" height="40" fill="var(--color-accent-900)"></rect>
+              <text x="{{ tipTextX }}" y="24" font-size="10" fill="var(--color-accent-300)" letter-spacing="1">{{ tipDate }}</text>
+              <text x="{{ tipTextX }}" y="40" font-size="13" font-weight="600" fill="#fff">{{ tipVal }} attendance</text></g>
+            </sc-if>
+            <sc-for list="{{ trendCols }}" as="c" hint-placeholder-count="14">
+              <rect x="{{ c.x }}" y="0" width="43" height="180" fill="transparent" onMouseEnter="{{ c.on }}" style="cursor:crosshair"></rect>
+            </sc-for>
+          </svg>
+        </div>
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:22px">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-family:var(--font-heading);font-size:18px;letter-spacing:.08em;margin-bottom:14px">TOP DISTRICTS BY WORKERS</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <sc-for list="{{ topDistricts }}" as="d" hint-placeholder-count="5">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:3px"><span>{{ d.name }}</span><b style="font-family:var(--font-heading)">{{ d.w }}</b></div>
+                <div style="height:8px;border:1px solid var(--color-accent-300)"><div style="height:100%;background:var(--color-accent);width:{{ d.pct }}%"></div></div>
+              </div>
+            </sc-for>
+          </div>
+          <button onClick="{{ goMap }}" class="btn btn-ghost" style="margin-top:14px;font-size:13px">View full map →</button>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px">
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:22px">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-family:var(--font-heading);font-size:18px;letter-spacing:.08em;margin-bottom:10px">COMPLIANCE QUEUE</div>
+          <table class="table" style="width:100%;font-size:13px">
+            <thead><tr><th style="text-align:left">ITEM</th><th style="text-align:right">PENDING</th><th style="text-align:right">DUE</th></tr></thead>
+            <tbody>
+              <tr><td>Payroll runs (Jul)</td><td style="text-align:right">₹4.82 Cr</td><td style="text-align:right">5 Aug</td></tr>
+              <tr><td>PF filings</td><td style="text-align:right">312 workers</td><td style="text-align:right">15 Aug</td></tr>
+              <tr><td>ESIC filings</td><td style="text-align:right">148 workers</td><td style="text-align:right">15 Aug</td></tr>
+              <tr><td>Advance outstanding</td><td style="text-align:right">₹86.4 L</td><td style="text-align:right">rolling</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:22px">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-family:var(--font-heading);font-size:18px;letter-spacing:.08em;margin-bottom:10px">LIVE FEED</div>
+          <div style="display:flex;flex-direction:column;gap:0;font-size:13px">
+            <sc-for list="{{ feed }}" as="f" hint-placeholder-count="5">
+              <div style="display:flex;gap:12px;padding:9px 0;border-top:1px dashed var(--color-neutral-300)">
+                <span style="font-family:var(--font-heading);color:var(--color-neutral-500);width:44px">{{ f.t }}</span><span>{{ f.msg }}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ vMap }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:1fr 320px;gap:20px;align-items:start;animation:fadeUp .25s ease">
+        <div class="blueprint" style="border:1px solid var(--color-accent-300);position:relative;padding:24px;background:var(--color-accent-100)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <span style="font-size:11px;letter-spacing:.14em;color:var(--color-accent-700);white-space:nowrap">FIG. 03 — BIHAR DISTRICT GRID · 38 DISTRICTS</span>
+            <div class="seg" style="display:flex">
+              <sc-for list="{{ metricOpts }}" as="m" hint-placeholder-count="3">
+                <button class="seg-opt" onClick="{{ m.go }}" style="font-size:12px;background:{{ m.bg }};color:{{ m.fg }}">{{ m.label }}</button>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:4px">
+            <sc-for list="{{ tiles }}" as="t" hint-placeholder-count="38">
+              <button onClick="{{ t.go }}" style="grid-column:{{ t.col }};grid-row:{{ t.row }};aspect-ratio:1.2;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;padding:7px 8px;text-align:left;transition:background .25s ease,transform .12s ease" style-hover="outline:2px solid var(--color-accent-700);outline-offset:-1px;transform:scale(1.03)">
+                <span style="font-family:var(--font-heading);font-size:12px;letter-spacing:.05em;line-height:1.1">{{ t.name }}</span>
+                <span style="font-size:11px;font-weight:600;opacity:.9">{{ t.valLabel }}</span>
+              </button>
+            </sc-for>
+          </div>
+          <div style="display:flex;gap:14px;align-items:center;margin-top:14px;font-size:11px;letter-spacing:.1em;color:var(--color-accent-700)">
+            <span>LOW</span>
+            <span style="flex:0 0 160px;height:8px;background:linear-gradient(90deg,var(--color-accent-100),var(--color-accent-900));border:1px solid var(--color-accent-300)"></span>
+            <span>HIGH · {{ metricName }}</span>
+          </div>
+        </div>
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:22px;animation:{{ dossierAnim }}">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-size:11px;letter-spacing:.14em;color:var(--color-neutral-600)">DISTRICT DOSSIER</div>
+          <h2 style="font-family:var(--font-heading);font-weight:600;font-size:28px;letter-spacing:.04em;margin:4px 0 16px">{{ selName }}</h2>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div style="border:1px solid var(--color-neutral-300);padding:12px"><div style="font-size:11px;color:var(--color-neutral-600);letter-spacing:.1em">WORKERS</div><div style="font-family:var(--font-heading);font-size:24px;font-weight:600">{{ selW }}</div></div>
+            <div style="border:1px solid var(--color-neutral-300);padding:12px"><div style="font-size:11px;color:var(--color-neutral-600);letter-spacing:.1em">OPEN DEMAND</div><div style="font-family:var(--font-heading);font-size:24px;font-weight:600">{{ selD }}</div></div>
+            <div style="border:1px solid var(--color-neutral-300);padding:12px"><div style="font-size:11px;color:var(--color-neutral-600);letter-spacing:.1em">ON DUTY</div><div style="font-family:var(--font-heading);font-size:24px;font-weight:600">{{ selOn }}</div></div>
+            <div style="border:1px solid var(--color-neutral-300);padding:12px"><div style="font-size:11px;color:var(--color-neutral-600);letter-spacing:.1em">MIGRATION OUT</div><div style="font-family:var(--font-heading);font-size:24px;font-weight:600">{{ selM }}</div></div>
+          </div>
+          <div style="margin-top:16px;font-size:13px;line-height:1.6;color:var(--color-neutral-700)">{{ selNote }}</div>
+          <div style="display:flex;gap:8px;margin-top:16px"><button onClick="{{ goWorkers }}" class="btn btn-secondary" style="font-size:13px;flex:1">View workers</button><button class="btn btn-primary" style="font-size:13px;flex:1">Post demand</button></div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ vWorkers }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex;gap:12px;margin-bottom:18px;align-items:center">
+        <input class="input" style="width:300px" placeholder="Search name, ID, skill…  खोजें" value="{{ query }}" onChange="{{ setQuery }}">
+        <div class="seg" style="display:flex">
+          <sc-for list="{{ statusOpts }}" as="s" hint-placeholder-count="4">
+            <button class="seg-opt" onClick="{{ s.go }}" style="font-size:12px;background:{{ s.bg }};color:{{ s.fg }}">{{ s.label }}</button>
+          </sc-for>
+        </div>
+        <span style="margin-left:auto;font-size:13px;color:var(--color-neutral-600);white-space:nowrap">{{ workerCount }} workers</span>
+        <button class="btn btn-primary" style="font-size:13px;white-space:nowrap">+ Register worker</button>
+      </div>
+      <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+        <div class="blueprint" style="border:1px dashed var(--color-neutral-400);position:relative;padding:64px 24px;text-align:center;animation:fadeUp .25s ease">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-family:var(--font-heading);font-size:22px;letter-spacing:.06em;margin-bottom:6px">NO WORKERS MATCH</div>
+          <div style="font-size:14px;color:var(--color-neutral-600);margin-bottom:16px">Try a different name, skill or district — or clear the status filter.</div>
+          <button onClick="{{ clearFilters }}" class="btn btn-secondary" style="font-size:13px">Clear filters</button>
+        </div>
+      </sc-if>
+      <sc-if value="{{ hasResults }}" hint-placeholder-val="{{ true }}">
+      <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;animation:fadeUp .25s ease">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <table class="table" style="width:100%;font-size:13px">
+          <thead><tr><th style="text-align:left;padding-left:18px">WORKER</th><th style="text-align:left">SKILL · CATEGORY</th><th style="text-align:left">DISTRICT</th><th style="text-align:right">DAILY WAGE</th><th style="text-align:center">RATING</th><th style="text-align:left">STATUS</th><th></th></tr></thead>
+          <tbody>
+            <sc-for list="{{ workers }}" as="w" hint-placeholder-count="8">
+              <tr style="transition:background .15s" style-hover="background:var(--color-accent-100)">
+                <td style="padding-left:18px"><div style="display:flex;align-items:center;gap:10px"><span style="width:30px;height:30px;border:1px solid var(--color-accent-400);display:grid;place-items:center;font-family:var(--font-heading);font-size:12px;color:var(--color-accent-700);flex:none">{{ w.init }}</span><span><b>{{ w.name }}</b><br><span style="font-size:11px;color:var(--color-neutral-500)">{{ w.id }}</span></span></div></td>
+                <td>{{ w.skill }}<br><span style="font-size:11px;color:var(--color-neutral-500)">{{ w.cat }}</span></td>
+                <td>{{ w.district }}</td>
+                <td style="text-align:right;font-family:var(--font-heading);font-size:15px">{{ w.wage }}</td>
+                <td style="text-align:center">{{ w.rating }}</td>
+                <td><span class="tag" style="background:{{ w.tagBg }};color:{{ w.tagFg }};border:1px solid {{ w.tagBd }}">{{ w.status }}</span></td>
+                <td><button onClick="{{ w.open }}" class="btn btn-ghost" style="font-size:12px">Profile →</button></td>
+              </tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+      </sc-if>
+    </sc-if>
+
+    <sc-if value="{{ vProfile }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:300px 1fr;gap:20px;align-items:start;animation:fadeUp .25s ease">
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:24px">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="width:96px;height:96px;border:1px solid var(--color-accent-400);display:grid;place-items:center;font-family:var(--font-heading);font-size:34px;color:var(--color-accent-700);margin-bottom:14px">SM</div>
+          <div style="font-family:var(--font-heading);font-size:24px;font-weight:600;letter-spacing:.03em">SUNIL KUMAR MANJHI</div>
+          <div style="font-size:13px;color:var(--color-neutral-600);margin-bottom:12px">BR-2481-0937 · Mason (Skilled) · Gaya</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px"><span class="tag tag-accent">ON DUTY</span><span class="tag tag-outline">AADHAAR ✓</span><span class="tag tag-outline">POLICE ✓</span><span class="tag tag-outline">★ 4.7</span></div>
+          <div style="font-size:13px;display:flex;flex-direction:column">
+            <sc-for list="{{ profileFacts }}" as="f" hint-placeholder-count="8">
+              <div style="display:flex;justify-content:space-between;gap:12px;border-top:1px dashed var(--color-neutral-300);padding:7px 0"><span style="color:var(--color-neutral-600)">{{ f.k }}</span><b style="text-align:right">{{ f.v }}</b></div>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div class="seg" style="display:flex;margin-bottom:16px">
+            <sc-for list="{{ profTabs }}" as="t" hint-placeholder-count="4">
+              <button class="seg-opt" onClick="{{ t.go }}" style="flex:1;font-size:13px;background:{{ t.bg }};color:{{ t.fg }}">{{ t.label }}</button>
+            </sc-for>
+          </div>
+          <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:24px;min-height:380px">
+            <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            <sc-if value="{{ ptOverview }}" hint-placeholder-val="{{ true }}">
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px">
+                <div style="border:1px solid var(--color-neutral-300);padding:14px"><div style="font-size:11px;letter-spacing:.1em;color:var(--color-neutral-600)">CURRENT SITE</div><div style="font-family:var(--font-heading);font-size:18px;margin-top:2px">L&amp;T — PATNA METRO C-2</div></div>
+                <div style="border:1px solid var(--color-neutral-300);padding:14px"><div style="font-size:11px;letter-spacing:.1em;color:var(--color-neutral-600)">ATTENDANCE (JUL)</div><div style="font-family:var(--font-heading);font-size:18px;margin-top:2px">26 / 27 DAYS</div></div>
+                <div style="border:1px solid var(--color-neutral-300);padding:14px"><div style="font-size:11px;letter-spacing:.1em;color:var(--color-neutral-600)">ADVANCE BALANCE</div><div style="font-family:var(--font-heading);font-size:18px;margin-top:2px">₹3,500</div></div>
+              </div>
+              <div style="font-family:var(--font-heading);font-size:16px;letter-spacing:.08em;margin-bottom:8px">SKILLS &amp; EXPERIENCE</div>
+              <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px"><span class="tag tag-neutral">Brickwork</span><span class="tag tag-neutral">Plastering</span><span class="tag tag-neutral">Shuttering</span><span class="tag tag-neutral">RCC finishing</span><span class="tag tag-outline">9 yrs experience</span><span class="tag tag-outline">Hindi · Magahi</span></div>
+              <div style="font-family:var(--font-heading);font-size:16px;letter-spacing:.08em;margin-bottom:8px">PPE &amp; TOOLS ISSUED</div>
+              <table class="table" style="width:100%;font-size:13px"><thead><tr><th style="text-align:left">ITEM</th><th style="text-align:left">ISSUED</th><th style="text-align:left">CONDITION</th></tr></thead>
+              <tbody><tr><td>Helmet + hi-vis vest</td><td>02 Jun 2026</td><td>Good</td></tr><tr><td>Safety shoes (sz 8)</td><td>02 Jun 2026</td><td>Good</td></tr><tr><td>Trowel set T-114</td><td>04 Jun 2026</td><td>Assigned</td></tr></tbody></table>
+            </sc-if>
+            <sc-if value="{{ ptDocs }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px">
+                <sc-for list="{{ docs }}" as="d" hint-placeholder-count="6">
+                  <div style="border:1px dashed var(--color-accent-400);padding:16px;display:flex;flex-direction:column;gap:4px" style-hover="background:var(--color-accent-100)">
+                    <span style="font-size:11px;letter-spacing:.1em;color:var(--color-accent-700)">{{ d.type }}</span>
+                    <b style="font-size:14px">{{ d.name }}</b>
+                    <span style="font-size:12px;color:var(--color-neutral-600)">{{ d.meta }}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ ptSalary }}" hint-placeholder-val="{{ false }}">
+              <table class="table" style="width:100%;font-size:13px">
+                <thead><tr><th style="text-align:left">MONTH</th><th style="text-align:right">DAYS</th><th style="text-align:right">GROSS</th><th style="text-align:right">ADVANCE</th><th style="text-align:right">PF+ESIC</th><th style="text-align:right">NET PAID</th><th style="text-align:left">MODE</th></tr></thead>
+                <tbody>
+                  <sc-for list="{{ salaryRows }}" as="s" hint-placeholder-count="4">
+                    <tr><td>{{ s.m }}</td><td style="text-align:right">{{ s.days }}</td><td style="text-align:right">{{ s.gross }}</td><td style="text-align:right;color:var(--color-neutral-600)">{{ s.adv }}</td><td style="text-align:right;color:var(--color-neutral-600)">{{ s.stat }}</td><td style="text-align:right;font-family:var(--font-heading);font-size:15px">{{ s.net }}</td><td>{{ s.mode }}</td></tr>
+                  </sc-for>
+                </tbody>
+              </table>
+            </sc-if>
+            <sc-if value="{{ ptAtt }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:13px;color:var(--color-neutral-600);margin-bottom:10px">July 2026 — GPS + face verified at L&amp;T Patna Metro C-2 gate.</div>
+              <div style="display:grid;grid-template-columns:repeat(14,1fr);gap:4px">
+                <sc-for list="{{ attDays }}" as="d" hint-placeholder-count="28">
+                  <div style="aspect-ratio:1;border:1px solid var(--color-neutral-300);background:{{ d.bg }};display:grid;place-items:center;font-size:10px;color:{{ d.fg }}">{{ d.n }}</div>
+                </sc-for>
+              </div>
+              <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--color-neutral-600)"><span>■ Present (26)</span><span style="opacity:.5">□ Absent (1)</span><span>◪ Half + OT marked on 14, 21</span></div>
+            </sc-if>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ vAttendance }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:16px;animation:fadeUp .25s ease">
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:18px 20px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div style="font-size:11px;letter-spacing:.12em;color:var(--color-neutral-600)">MARKED TODAY</div><div style="font-family:var(--font-heading);font-size:32px;font-weight:600">84,212</div><div style="font-size:12px;color:var(--color-accent-700)">92.4% of deployed</div></div>
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:18px 20px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div style="font-size:11px;letter-spacing:.12em;color:var(--color-neutral-600)">GPS VERIFIED</div><div style="font-family:var(--font-heading);font-size:32px;font-weight:600">71,480</div><div style="font-size:12px;color:var(--color-neutral-600)">within 150 m geofence</div></div>
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:18px 20px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div style="font-size:11px;letter-spacing:.12em;color:var(--color-neutral-600)">FACE / SELFIE</div><div style="font-family:var(--font-heading);font-size:32px;font-weight:600">9,914</div><div style="font-size:12px;color:var(--color-neutral-600)">supervisor devices</div></div>
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:18px 20px"><i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i><div style="font-size:11px;letter-spacing:.12em;color:var(--color-neutral-600)">OVERTIME LOGGED</div><div style="font-family:var(--font-heading);font-size:32px;font-weight:600">6,118 hrs</div><div style="font-size:12px;color:#b45309">flag: 3 sites &gt; 4 hr OT</div></div>
+      </div>
+      <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:22px">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <div style="font-family:var(--font-heading);font-size:18px;letter-spacing:.08em;margin-bottom:12px">GANG SHEET — L&amp;T PATNA METRO C-2 · THIS WEEK</div>
+        <table class="table" style="width:100%;font-size:13px">
+          <thead><tr><th style="text-align:left">WORKER</th><th style="text-align:center">MON</th><th style="text-align:center">TUE</th><th style="text-align:center">WED</th><th style="text-align:center">THU</th><th style="text-align:center">FRI</th><th style="text-align:center">SAT</th><th style="text-align:right">IN → OUT (TODAY)</th><th style="text-align:right">OT</th></tr></thead>
+          <tbody>
+            <sc-for list="{{ gang }}" as="g" hint-placeholder-count="6">
+              <tr><td><b>{{ g.name }}</b> <span style="font-size:11px;color:var(--color-neutral-500)">{{ g.skill }}</span></td>
+              <td style="text-align:center">{{ g.d1 }}</td><td style="text-align:center">{{ g.d2 }}</td><td style="text-align:center">{{ g.d3 }}</td><td style="text-align:center">{{ g.d4 }}</td><td style="text-align:center">{{ g.d5 }}</td><td style="text-align:center;color:var(--color-accent-700)"><b>{{ g.d6 }}</b></td>
+              <td style="text-align:right;font-family:var(--font-heading)">{{ g.io }}</td><td style="text-align:right">{{ g.ot }}</td></tr>
+            </sc-for>
+          </tbody>
+        </table>
+        <div style="display:flex;gap:16px;margin-top:12px;font-size:12px;color:var(--color-neutral-600)"><span>P = present · A = absent · H = half day</span><span class="tag tag-outline">QR GATE 2 ACTIVE</span><span class="tag tag-outline">GEOFENCE 150 M</span></div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ vPayroll }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:1fr 340px;gap:20px;align-items:start;animation:fadeUp .25s ease">
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:22px">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+            <span style="font-family:var(--font-heading);font-size:18px;letter-spacing:.08em">JULY 2026 RUN — MITHILA MANPOWER × L&amp;T C-2</span>
+            <span class="tag" style="background:#fef3c7;color:#92400e;border:1px solid #f59e0b">PENDING APPROVAL</span>
+          </div>
+          <table class="table" style="width:100%;font-size:13px">
+            <thead><tr><th style="text-align:left">WORKER</th><th style="text-align:right">DAYS</th><th style="text-align:right">WAGE/DAY</th><th style="text-align:right">OT</th><th style="text-align:right">ADV. RECOVERY</th><th style="text-align:right">PF+ESIC</th><th style="text-align:right">NET</th><th style="text-align:right">STATUS</th></tr></thead>
+            <tbody>
+              <sc-for list="{{ payRows }}" as="p" hint-placeholder-count="7">
+                <tr style-hover="background:var(--color-accent-100)"><td><b>{{ p.name }}</b></td><td style="text-align:right">{{ p.days }}</td><td style="text-align:right">{{ p.wage }}</td><td style="text-align:right">{{ p.ot }}</td><td style="text-align:right;color:#b45309">{{ p.adv }}</td><td style="text-align:right;color:var(--color-neutral-600)">{{ p.stat }}</td><td style="text-align:right;font-family:var(--font-heading);font-size:15px">{{ p.net }}</td><td style="text-align:right"><span class="tag" style="background:{{ p.stBg }};color:{{ p.stFg }};border:1px solid {{ p.stBd }};font-size:10px;white-space:nowrap">{{ p.stLabel }}</span></td></tr>
+              </sc-for>
+            </tbody>
+          </table>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div class="blueprint" style="border:1px solid var(--color-accent-300);position:relative;padding:22px;background:var(--color-accent-100)">
+            <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            <div style="font-size:11px;letter-spacing:.14em;color:var(--color-accent-700)">RUN SUMMARY</div>
+            <div style="font-family:var(--font-heading);font-size:38px;font-weight:600;margin:6px 0">₹6,41,180</div>
+            <div style="font-size:13px;display:flex;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;border-top:1px dashed var(--color-accent-400);padding:7px 0"><span>Gross wages (38 workers)</span><b>₹6,88,400</b></div>
+              <div style="display:flex;justify-content:space-between;border-top:1px dashed var(--color-accent-400);padding:7px 0"><span>Overtime</span><b>₹42,300</b></div>
+              <div style="display:flex;justify-content:space-between;border-top:1px dashed var(--color-accent-400);padding:7px 0"><span>Advance recovery</span><b>− ₹31,500</b></div>
+              <div style="display:flex;justify-content:space-between;border-top:1px dashed var(--color-accent-400);padding:7px 0"><span>PF (12%) + ESIC (0.75%)</span><b>− ₹58,020</b></div>
+            </div>
+            <button onClick="{{ approveRun }}" class="btn btn-primary btn-block" style="margin-top:16px">{{ approveLabel }}</button>
+            <div style="font-size:12px;color:var(--color-accent-700);margin-top:8px;text-align:center">{{ approveNote }}</div>
+          </div>
+          <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:22px">
+            <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+            <div style="font-family:var(--font-heading);font-size:16px;letter-spacing:.08em;margin-bottom:10px">PAYOUT CHANNELS</div>
+            <div style="font-size:13px;display:flex;flex-direction:column">
+              <div style="display:flex;justify-content:space-between;border-top:1px dashed var(--color-neutral-300);padding:7px 0"><span>Bank transfer (IMPS)</span><b>31 workers</b></div>
+              <div style="display:flex;justify-content:space-between;border-top:1px dashed var(--color-neutral-300);padding:7px 0"><span>UPI</span><b>7 workers</b></div>
+              <div style="display:flex;justify-content:space-between;border-top:1px dashed var(--color-neutral-300);padding:7px 0"><span>Salary slips (Hindi PDF)</span><b>auto via WhatsApp</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ vAi }}" hint-placeholder-val="{{ false }}">
+      <div style="display:grid;grid-template-columns:1fr 300px;gap:20px;align-items:start;animation:fadeUp .25s ease">
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;display:flex;flex-direction:column;height:560px">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="padding:16px 22px;border-bottom:1px solid var(--color-neutral-300);display:flex;justify-content:space-between;align-items:center">
+            <span style="font-family:var(--font-heading);font-size:18px;letter-spacing:.08em">SAHAYAK — CHAT WITH YOUR DATA</span>
+            <span class="tag tag-accent" style="white-space:nowrap">CLAUDE-POWERED</span>
+          </div>
+          <div style="flex:1;overflow-y:auto;padding:22px;display:flex;flex-direction:column;gap:14px">
+            <sc-for list="{{ chat }}" as="m" hint-placeholder-count="2">
+              <div style="max-width:76%;padding:12px 16px;font-size:14px;line-height:1.55;align-self:{{ m.align }};background:{{ m.bg }};color:{{ m.fg }};border:1px solid {{ m.bd }};white-space:pre-line;animation:fadeUp .2s ease">{{ m.text }}</div>
+            </sc-for>
+            <sc-if value="{{ typing }}" hint-placeholder-val="{{ false }}">
+              <div style="align-self:flex-start;padding:12px 16px;border:1px solid var(--color-accent-300);background:var(--color-accent-100);display:flex;gap:4px;align-items:center">
+                <span style="width:6px;height:6px;border-radius:50%;background:var(--color-accent-700);animation:blink 1.2s infinite"></span>
+                <span style="width:6px;height:6px;border-radius:50%;background:var(--color-accent-700);animation:blink 1.2s .2s infinite"></span>
+                <span style="width:6px;height:6px;border-radius:50%;background:var(--color-accent-700);animation:blink 1.2s .4s infinite"></span>
+              </div>
+            </sc-if>
+          </div>
+          <div style="padding:14px 22px;border-top:1px solid var(--color-neutral-300);display:flex;gap:10px">
+            <input class="input" style="flex:1" placeholder="Ask anything… e.g. Predict manpower shortage in September" value="{{ draft }}" onChange="{{ setDraft }}" onKeyDown="{{ onKey }}">
+            <button onClick="{{ send }}" class="btn btn-primary">Ask →</button>
+          </div>
+        </div>
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:22px">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-family:var(--font-heading);font-size:16px;letter-spacing:.08em;margin-bottom:12px">TRY ASKING</div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <sc-for list="{{ suggestions }}" as="s" hint-placeholder-count="4">
+              <button onClick="{{ s.go }}" style="text-align:left;border:1px dashed var(--color-accent-400);background:transparent;padding:10px 12px;font-size:13px;cursor:pointer;color:var(--color-accent-800)" style-hover="background:var(--color-accent-100)">{{ s.q }}</button>
+            </sc-for>
+          </div>
+          <div style="font-family:var(--font-heading);font-size:16px;letter-spacing:.08em;margin:20px 0 10px">WATCHDOG</div>
+          <div style="font-size:13px;display:flex;flex-direction:column">
+            <div style="display:flex;justify-content:space-between;border-top:1px dashed var(--color-neutral-300);padding:7px 0"><span>Duplicate Aadhaar flags</span><b style="color:#b91c1c">3 open</b></div>
+            <div style="display:flex;justify-content:space-between;border-top:1px dashed var(--color-neutral-300);padding:7px 0"><span>Ghost attendance alerts</span><b style="color:#b45309">1 site</b></div>
+            <div style="display:flex;justify-content:space-between;border-top:1px dashed var(--color-neutral-300);padding:7px 0"><span>Wage anomaly checks</span><b style="color:var(--color-accent-700)">clear</b></div>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ paletteOpen }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ closePalette }}" style="position:fixed;inset:0;background:color-mix(in oklab,var(--color-accent-900) 45%,transparent);backdrop-filter:blur(3px);z-index:60;display:flex;justify-content:center;padding-top:14vh">
+        <div onClick="{{ stopClick }}" class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;background:var(--color-bg);width:480px;height:fit-content;box-shadow:var(--shadow-lg);animation:fadeUp .18s ease">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <input class="input" autoFocus="{{ true }}" style="width:100%;box-sizing:border-box;border:none;border-bottom:1px solid var(--color-neutral-300);padding:16px 18px;font-size:15px" placeholder="Jump to… dashboard, payroll, a district" value="{{ paletteQ }}" onChange="{{ setPaletteQ }}">
+          <div style="display:flex;flex-direction:column;padding:8px">
+            <sc-for list="{{ paletteItems }}" as="p" hint-placeholder-count="5">
+              <button onClick="{{ p.go }}" onMouseEnter="{{ p.hover }}" style="display:flex;justify-content:space-between;align-items:center;text-align:left;border:none;background:{{ p.bg }};cursor:pointer;padding:11px 12px;font-size:14px;font-family:var(--font-body);color:var(--color-text);transition:background .12s ease">
+                <span style="font-family:var(--font-heading);letter-spacing:.08em;font-size:15px">{{ p.label }}</span>
+                <span style="font-size:11px;color:var(--color-neutral-500);letter-spacing:.08em">{{ p.kind }}</span>
+              </button>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+  </main>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440},&quot;view&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;dashboard&quot;,&quot;map&quot;,&quot;workers&quot;,&quot;profile&quot;,&quot;attendance&quot;,&quot;payroll&quot;,&quot;ai&quot;],&quot;default&quot;:&quot;dashboard&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Screen&quot;}}">
+class Component extends DCLogic {
+  state = { view: this.props.view ?? 'dashboard', metric: 'w', sel: 'PATNA', query: '', status: 'ALL', profTab: 'overview', chat: [], draft: '', typing: false, paletteOpen: false, paletteQ: '', paletteIdx: 0, hoverIdx: null, paidCount: 0, flip: false };
+  componentDidMount() {
+    this._kd = (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); this.setState({ paletteOpen: !this.state.paletteOpen, paletteQ: '', paletteIdx: 0 }); }
+      else if (this.state.paletteOpen) {
+        if (e.key === 'Escape') this.setState({ paletteOpen: false });
+        else if (e.key === 'ArrowDown') { e.preventDefault(); this.setState({ paletteIdx: Math.min(this.state.paletteIdx + 1, (this._pItems || []).length - 1) }); }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); this.setState({ paletteIdx: Math.max(this.state.paletteIdx - 1, 0) }); }
+        else if (e.key === 'Enter') { const it = (this._pItems || [])[this.state.paletteIdx]; if (it) it.go(); }
+      }
+    };
+    window.addEventListener('keydown', this._kd);
+  }
+  componentWillUnmount() { window.removeEventListener('keydown', this._kd); }
+  districts() {
+    return [
+      ['W CHAMPARAN',1,1,9840,620,410],['E CHAMPARAN',2,1,12480,540,880],['SHEOHAR',3,1,1820,90,310],['SITAMARHI',4,1,7120,310,940],['MADHUBANI',5,1,10940,420,1620],['SUPAUL',6,1,5210,180,720],['ARARIA',7,1,6080,240,910],['KISHANGANJ',8,1,4310,150,680],
+      ['GOPALGANJ',1,2,6540,280,1140],['SIWAN',2,2,8120,350,1490],['MUZAFFARPUR',3,2,16240,1180,760],['DARBHANGA',4,2,11360,610,1210],['SAHARSA',5,2,4980,210,650],['MADHEPURA',6,2,4420,170,590],['PURNIA',7,2,8760,520,470],['KATIHAR',8,2,6890,300,520],
+      ['BUXAR',1,3,4210,190,410],['BHOJPUR',2,3,7640,410,530],['SARAN',3,3,9120,460,980],['VAISHALI',4,3,10480,720,440],['SAMASTIPUR',5,3,9860,480,860],['BEGUSARAI',6,3,8540,690,310],['KHAGARIA',7,3,3980,160,480],['BHAGALPUR',8,3,11220,840,390],
+      ['KAIMUR',1,4,3640,140,380],['ROHTAS',2,4,6980,520,290],['ARWAL',3,4,2110,80,260],['PATNA',4,4,28460,2340,180],['NALANDA',5,4,8210,430,350],['LAKHISARAI',6,4,2860,110,300],['MUNGER',7,4,5140,380,270],['BANKA',8,4,3720,130,460],
+      ['AURANGABAD',2,5,5890,340,330],['GAYA',3,5,13480,890,610],['JEHANABAD',4,5,3120,120,280],['SHEIKHPURA',5,5,1960,70,240],['NAWADA',6,5,4480,160,420],['JAMUI',7,5,3310,120,390]
+    ].map(d => ({ name: d[0], col: d[1], row: d[2], w: d[3], dem: d[4], mig: d[5] }));
+  }
+  workerData() {
+    return [
+      { name: 'Sunil Kumar Manjhi', id: 'BR-2481-0937', init: 'SM', skill: 'Mason', cat: 'Skilled', district: 'Gaya', wage: 780, rating: '★ 4.7', status: 'ON DUTY' },
+      { name: 'Ramesh Paswan', id: 'BR-1130-4482', init: 'RP', skill: 'Bar bender', cat: 'Skilled', district: 'Patna', wage: 820, rating: '★ 4.5', status: 'ON DUTY' },
+      { name: 'Meena Devi', id: 'BR-3327-1206', init: 'MD', skill: 'Helper', cat: 'Unskilled', district: 'Muzaffarpur', wage: 450, rating: '★ 4.8', status: 'AVAILABLE' },
+      { name: 'Mohammad Irfan', id: 'BR-0912-7754', init: 'MI', skill: 'Electrician', cat: 'Skilled', district: 'Patna', wage: 900, rating: '★ 4.9', status: 'ON DUTY' },
+      { name: 'Santosh Yadav', id: 'BR-5561-0348', init: 'SY', skill: 'Scaffolder', cat: 'Semi-skilled', district: 'Bhagalpur', wage: 610, rating: '★ 4.2', status: 'AVAILABLE' },
+      { name: 'Anita Kumari', id: 'BR-2209-8871', init: 'AK', skill: 'Painter', cat: 'Semi-skilled', district: 'Darbhanga', wage: 590, rating: '★ 4.6', status: 'ON DUTY' },
+      { name: 'Birju Ram', id: 'BR-4470-2215', init: 'BR', skill: 'Welder', cat: 'Skilled', district: 'Rohtas', wage: 860, rating: '★ 4.4', status: 'INACTIVE' },
+      { name: 'Dinesh Sahni', id: 'BR-6684-0093', init: 'DS', skill: 'Plumber', cat: 'Skilled', district: 'Vaishali', wage: 800, rating: '★ 4.3', status: 'AVAILABLE' },
+      { name: 'Kavita Devi', id: 'BR-7018-3364', init: 'KD', skill: 'Helper', cat: 'Unskilled', district: 'Siwan', wage: 450, rating: '★ 4.1', status: 'INACTIVE' }
+    ];
+  }
+  aiAnswer(q) {
+    const ql = q.toLowerCase();
+    if (ql.includes('electrician')) return '412 electricians are currently AVAILABLE in Patna district.\n\n• Skilled (ITI-certified): 268\n• Semi-skilled: 144\n• Median expected wage: ₹850/day\n• 86 have metro-rail experience\n\nWant me to shortlist the top 50 by rating and distance to your site?';
+    if (ql.includes('migration')) return 'MADHUBANI has the highest out-migration this quarter: 1,620 workers left for NCR and Gujarat.\n\nTop 3: Madhubani (1,620) · Siwan (1,490) · E. Champaran (880).\n\nDriver: post-monsoon farm slack + ₹120/day wage gap vs. Surat. A district wage floor of ₹560 would retain an estimated 38%.';
+    if (ql.includes('shortage') || ql.includes('forecast') || ql.includes('demand')) return 'September 2026 forecast (harvest season effect):\n\n• Projected shortage: 4,800 workers statewide\n• Worst hit: masons in Patna (−22%), helpers in Begusarai (−18%)\n• Surplus pools: Purnia (+640), Katihar (+410)\n\nRecommendation: pre-book 2,100 workers from Purnia–Katihar belt this week; est. mobilisation cost ₹18.4 L.';
+    if (ql.includes('payroll') || ql.includes('salary')) return 'Draft payroll for July 2026 generated ✓\n\n• 38 workers · Mithila Manpower × L&T C-2\n• Gross ₹6.88 L · Net payable ₹6.41 L\n• PF ₹52.1 K · ESIC ₹5.9 K · Advance recovery ₹31.5 K\n\nIt is waiting in Payroll → Pending Approval. Shall I trigger IMPS on approval?';
+    if (ql.includes('attendance')) return 'Attendance report, week of 27 Jul – 2 Aug ✓\n\n• Statewide average: 92.4% (↑1.1 pt WoW)\n• Best site: Adani Warehousing Begusarai — 98.2%\n• Flag: JSW Banka gate 3 shows 11 manual overrides — possible ghost punching. I have opened a fraud-review ticket (#FR-2210).';
+    return 'I can answer questions about workers, districts, attendance, payroll and demand forecasts across all 38 districts. Try one of the suggested prompts, or ask e.g. "Which agency has the best compliance score?"';
+  }
+  ask(q) {
+    const chat = [...this.state.chat, { role: 'u', text: q }];
+    this.setState({ chat, draft: '', typing: true });
+    setTimeout(() => this.setState({ typing: false, chat: [...this.state.chat, { role: 'a', text: this.aiAnswer(q) }] }), 900);
+  }
+  renderVals() {
+    const st = this.state, acc = n => n.toLocaleString('en-IN');
+    const views = [
+      ['dashboard', 'DASHBOARD', 'डैशबोर्ड', 'SUPER ADMIN · STATE OVERVIEW'],
+      ['map', 'BIHAR MAP', 'नक्शा', 'GEO ANALYTICS · 38 DISTRICTS'],
+      ['workers', 'WORKERS', 'श्रमिक', 'REGISTRY · 2,48,312 PROFILES'],
+      ['profile', 'WORKER PROFILE', 'प्रोफ़ाइल', 'REGISTRY · BR-2481-0937'],
+      ['attendance', 'ATTENDANCE', 'हाज़िरी', 'GPS · QR · FACE VERIFIED'],
+      ['payroll', 'PAYROLL', 'वेतन', 'JULY 2026 · 214 RUNS'],
+      ['ai', 'AI ASSISTANT', 'सहायक', 'SAHAYAK · CHAT WITH DATA']
+    ];
+    const cur = views.find(v => v[0] === st.view) || views[0];
+    const navItems = views.filter(v => v[0] !== 'profile').map(v => ({
+      label: v[1], hi: v[2], go: () => this.setState({ view: v[0] }),
+      bg: v[0] === st.view ? 'var(--color-accent-800)' : 'transparent',
+      fg: v[0] === st.view ? 'var(--color-accent-100)' : 'var(--color-accent-200)',
+      edge: v[0] === st.view ? 'var(--color-accent-300)' : 'transparent'
+    }));
+    // dashboard
+    const trend = [91.2,92.0,90.8,93.1,92.6,88.4,91.9,93.4,92.8,94.0,93.2,91.7,92.9,92.4];
+    const pts = trend.map((v, i) => `${(i * 600 / 13).toFixed(0)},${(180 - (v - 84) * 12).toFixed(0)}`);
+    const ds = this.districts(); const maxW = 28460;
+    const metric = st.metric, mKey = metric === 'w' ? 'w' : metric === 'd' ? 'dem' : 'mig';
+    const mMax = Math.max(...ds.map(d => d[mKey]));
+    const sel = ds.find(d => d.name === st.sel) || ds[0];
+    // workers
+    const all = this.workerData();
+    const filtered = all.filter(w => (st.status === 'ALL' || w.status === st.status) && (w.name + w.skill + w.district + w.id).toLowerCase().includes(st.query.toLowerCase()));
+    const tagFor = s => s === 'ON DUTY' ? ['var(--color-accent-100)', 'var(--color-accent-800)', 'var(--color-accent-400)'] : s === 'AVAILABLE' ? ['#dcfce7', '#166534', '#22c55e'] : ['var(--color-neutral-200)', 'var(--color-neutral-600)', 'var(--color-neutral-400)'];
+    const segBtn = (active) => active ? ['var(--color-accent-900)', 'var(--color-accent-100)'] : ['transparent', 'inherit'];
+    const attDays = Array.from({ length: 28 }, (_, i) => {
+      const n = i + 1, absent = n === 13, half = n === 14 || n === 21;
+      return { n, bg: absent ? 'transparent' : half ? 'var(--color-accent-300)' : 'var(--color-accent-700)', fg: absent ? 'var(--color-neutral-500)' : half ? 'var(--color-accent-900)' : 'var(--color-accent-100)' };
+    });
+    const chat = (st.chat.length ? st.chat : [{ role: 'a', text: 'Namaste Anand. I have live access to the registry, attendance, payroll and demand data. Ask me anything about Bihar\'s workforce.' }])
+      .map(m => m.role === 'u'
+        ? { text: m.text, align: 'flex-end', bg: 'var(--color-accent-900)', fg: 'var(--color-accent-100)', bd: 'var(--color-accent-900)' }
+        : { text: m.text, align: 'flex-start', bg: 'var(--color-accent-100)', fg: 'var(--color-text)', bd: 'var(--color-accent-300)' });
+    return {
+      navItems, viewTitle: cur[1], viewKicker: cur[3],
+      vDashboard: st.view === 'dashboard', vMap: st.view === 'map', vWorkers: st.view === 'workers', vProfile: st.view === 'profile', vAttendance: st.view === 'attendance', vPayroll: st.view === 'payroll', vAi: st.view === 'ai',
+      goMap: () => this.setState({ view: 'map' }), goWorkers: () => this.setState({ view: 'workers' }),
+      kpiRows: (() => {
+        const up = 'M2 7 L5 3 L8 7', down = 'M2 3 L5 7 L8 3';
+        const k = (label, value, delta, dir, deltaColor) => ({ label, value, delta, deltaColor, chevPath: dir === 'up' ? up : down, chevDisplay: dir ? 'block' : 'none' });
+        return [
+          { kicker: 'WORKFORCE', items: [
+            k('REGISTERED WORKERS', '2,48,312', '6.2% MoM', 'up', 'var(--color-accent-700)'),
+            k('AGENCIES', '1,240', '38 this month', 'up', 'var(--color-accent-700)'),
+            k("TODAY'S ATTENDANCE", '92.4%', '84,212 marked in', null, 'var(--color-neutral-600)'),
+            k('AVAILABLE NOW', '61,480', 'ready to deploy', null, 'var(--color-neutral-600)')
+          ]},
+          { kicker: 'MONEY & COMPLIANCE', items: [
+            k('REVENUE (JUL)', '₹3.18 Cr', '11.4% MoM', 'up', 'var(--color-accent-700)'),
+            k('PAYROLL PENDING', '₹4.82 Cr', '214 runs await approval', null, '#a16207'),
+            k('ADVANCE OUTSTANDING', '₹86.4 L', '4.1% MoM', 'down', 'var(--color-accent-700)'),
+            k('PF + ESIC PENDING', '460', 'filings due 15 Aug', null, '#a16207')
+          ]}
+        ];
+      })(),
+      trendPts: pts.join(' '), trendArea: pts.join(' ') + ' 600,180 0,180',
+      trendEndX: 600, trendEndY: (180 - (trend[13] - 84) * 12).toFixed(0),
+      trendLabelX: 496, trendLabelY: (180 - (trend[13] - 84) * 12 - 14).toFixed(0),
+      trendCols: trend.map((v, i) => ({ x: (i * 600 / 13 - 21.5).toFixed(0), on: () => { if (this.state.hoverIdx !== i) this.setState({ hoverIdx: i }); } })),
+      tipOff: () => this.setState({ hoverIdx: null }),
+      tipShow: st.hoverIdx !== null, tipHidden: st.hoverIdx === null,
+      ...(st.hoverIdx !== null ? (() => {
+        const i = st.hoverIdx, x = i * 600 / 13, y = 180 - (trend[i] - 84) * 12;
+        const dates = ['20 JUL','21 JUL','22 JUL','23 JUL','24 JUL','25 JUL','26 JUL','27 JUL','28 JUL','29 JUL','30 JUL','31 JUL','1 AUG','2 AUG'];
+        const boxX = Math.min(Math.max(x - 52, 4), 492);
+        return { tipX: x.toFixed(0), tipY: y.toFixed(0), tipBoxX: boxX.toFixed(0), tipTextX: (boxX + 10).toFixed(0), tipDate: dates[i], tipVal: trend[i].toFixed(1) + '%' };
+      })() : {}),
+      topDistricts: [...ds].sort((a, b) => b.w - a.w).slice(0, 5).map(d => ({ name: d.name, w: acc(d.w), pct: Math.round(d.w / maxW * 100) })),
+      feed: [
+        { t: '10:41', msg: 'Meena Devi (Muzaffarpur) — GPS punch-in at Adani Warehousing gate 1' },
+        { t: '10:38', msg: 'Payroll run #P-2214 approved · ₹3.2 L → 22 workers via IMPS' },
+        { t: '10:31', msg: 'New demand: NHAI Purnia bypass — 120 helpers, ₹480/day' },
+        { t: '10:24', msg: 'Duplicate Aadhaar flag: BR-8812 vs BR-6604 (review queued)' },
+        { t: '10:16', msg: 'Mithila Manpower compliance score ↑ 94 → 96' }
+      ],
+      // map
+      metricOpts: [['w', 'WORKERS'], ['d', 'DEMAND'], ['m', 'MIGRATION']].map(m => { const [bg, fg] = segBtn(st.metric === m[0]); return { label: m[1], go: () => this.setState({ metric: m[0] }), bg, fg }; }),
+      metricName: metric === 'w' ? 'WORKERS' : metric === 'd' ? 'OPEN DEMAND' : 'OUT-MIGRATION',
+      tiles: ds.map(d => {
+        const k = d[mKey] / mMax, dark = k > 0.55;
+        return {
+          name: d.name, col: d.col, row: d.row, valLabel: acc(d[mKey]),
+          bg: `color-mix(in oklab, var(--color-accent-900) ${Math.round(8 + k * 84)}%, var(--color-accent-100))`,
+          fg: dark ? 'var(--color-accent-100)' : 'var(--color-accent-900)',
+          border: d.name === st.sel ? 'var(--color-accent-900)' : 'var(--color-accent-300)',
+          go: () => this.setState({ sel: d.name, flip: !this.state.flip })
+        };
+      }),
+      dossierAnim: (st.flip ? 'slideA' : 'slideB') + ' .28s ease',
+      selName: sel.name, selW: acc(sel.w), selD: acc(sel.dem), selOn: acc(Math.round(sel.w * 0.34)), selM: acc(sel.mig),
+      selNote: sel.name === 'PATNA' ? 'Highest concentration in the state — metro rail, airport expansion and 14 active commercial sites. Demand outstrips local supply; net in-migration district.' : `${sel.dem > 500 ? 'High' : 'Moderate'} open demand against ${acc(sel.w)} registered workers. ${sel.mig > 900 ? 'Significant seasonal out-migration to NCR/Gujarat — retention incentive recommended.' : 'Migration within normal seasonal band.'}`,
+      // workers
+      query: st.query, setQuery: e => this.setState({ query: e.target.value }), workerCount: acc(filtered.length),
+      noResults: filtered.length === 0, hasResults: filtered.length > 0,
+      clearFilters: () => this.setState({ query: '', status: 'ALL' }),
+      typing: st.typing,
+      paletteOpen: st.paletteOpen, paletteQ: st.paletteQ,
+      openPalette: () => this.setState({ paletteOpen: true, paletteQ: '' }),
+      closePalette: () => this.setState({ paletteOpen: false }),
+      stopClick: e => e.stopPropagation(),
+      setPaletteQ: e => this.setState({ paletteQ: e.target.value, paletteIdx: 0 }),
+      paletteItems: (() => {
+        const q = st.paletteQ.toLowerCase();
+        const vs = views.filter(v => v[0] !== 'profile').map(v => ({ label: v[1], kind: 'VIEW', go: () => this.setState({ view: v[0], paletteOpen: false }) }));
+        const dts = ds.map(d => ({ label: d.name, kind: 'DISTRICT', go: () => this.setState({ view: 'map', sel: d.name, flip: !this.state.flip, paletteOpen: false }) }));
+        const items = [...vs, ...dts].filter(i => i.label.toLowerCase().includes(q)).slice(0, 7);
+        this._pItems = items;
+        return items.map((it, i) => ({ ...it, bg: i === st.paletteIdx ? 'var(--color-accent-100)' : 'transparent', hover: () => this.setState({ paletteIdx: i }) }));
+      })(),
+      statusOpts: ['ALL', 'ON DUTY', 'AVAILABLE', 'INACTIVE'].map(s => { const [bg, fg] = segBtn(st.status === s); return { label: s, go: () => this.setState({ status: s }), bg, fg }; }),
+      workers: filtered.map(w => { const [tagBg, tagFg, tagBd] = tagFor(w.status); return { ...w, wage: '₹' + w.wage, tagBg, tagFg, tagBd, open: () => this.setState({ view: 'profile' }) }; }),
+      // profile
+      profileFacts: [
+        { k: 'Father', v: 'Late Raghu Manjhi' }, { k: 'DOB · Age', v: '14 Mar 1991 · 35' }, { k: 'Village · Block', v: 'Bara, Sherghati' }, { k: 'Phone', v: '+91 98352 41067' },
+        { k: 'Blood group', v: 'B+' }, { k: 'Aadhaar', v: 'XXXX-XXXX-4482 ✓' }, { k: 'Bank', v: 'SBI ···9081 (UPI ✓)' }, { k: 'PF · ESIC', v: 'BR/PAT/48112 · 3109…' },
+        { k: 'Daily wage', v: '₹780 (asks ₹800)' }, { k: 'Joined Majdoor', v: '11 Feb 2022' }
+      ],
+      profTabs: [['overview', 'OVERVIEW'], ['docs', 'DOCUMENTS'], ['att', 'ATTENDANCE'], ['salary', 'SALARY']].map(t => { const [bg, fg] = segBtn(st.profTab === t[0]); return { label: t[1], go: () => this.setState({ profTab: t[0] }), bg, fg }; }),
+      ptOverview: st.profTab === 'overview', ptDocs: st.profTab === 'docs', ptAtt: st.profTab === 'att', ptSalary: st.profTab === 'salary',
+      docs: [
+        { type: 'IDENTITY', name: 'Aadhaar card', meta: 'PDF · verified 11 Feb 2022' }, { type: 'IDENTITY', name: 'PAN card', meta: 'Image · verified' },
+        { type: 'VERIFICATION', name: 'Police verification', meta: 'PDF · Gaya SP office · 2024' }, { type: 'SKILL', name: 'ITI Masonry certificate', meta: 'PDF · NSDC · 2019' },
+        { type: 'BANK', name: 'Passbook first page', meta: 'Image · SBI Sherghati' }, { type: 'MEDICAL', name: 'Fitness certificate', meta: 'PDF · valid till Jan 2027' }
+      ],
+      salaryRows: [
+        { m: 'Jul 2026', days: 26, gross: '₹21,780', adv: '− ₹1,500', stat: '− ₹1,830', net: '₹18,450', mode: 'IMPS (pending)' },
+        { m: 'Jun 2026', days: 25, gross: '₹20,940', adv: '− ₹1,500', stat: '− ₹1,760', net: '₹17,680', mode: 'IMPS ✓' },
+        { m: 'May 2026', days: 27, gross: '₹22,620', adv: '—', stat: '− ₹1,900', net: '₹20,720', mode: 'UPI ✓' },
+        { m: 'Apr 2026', days: 24, gross: '₹19,860', adv: '− ₹500', stat: '− ₹1,670', net: '₹17,690', mode: 'IMPS ✓' }
+      ],
+      attDays,
+      // attendance
+      gang: [
+        { name: 'Sunil K. Manjhi', skill: 'Mason', d1: 'P', d2: 'P', d3: 'P', d4: 'P', d5: 'P', d6: 'P', io: '07:58 → —', ot: '1.5h' },
+        { name: 'Ramesh Paswan', skill: 'Bar bender', d1: 'P', d2: 'P', d3: 'A', d4: 'P', d5: 'P', d6: 'P', io: '08:04 → —', ot: '—' },
+        { name: 'Mohammad Irfan', skill: 'Electrician', d1: 'P', d2: 'P', d3: 'P', d4: 'P', d5: 'H', d6: 'P', io: '07:51 → —', ot: '2h' },
+        { name: 'Anita Kumari', skill: 'Painter', d1: 'P', d2: 'H', d3: 'P', d4: 'P', d5: 'P', d6: 'P', io: '08:12 → —', ot: '—' },
+        { name: 'Santosh Yadav', skill: 'Scaffolder', d1: 'A', d2: 'P', d3: 'P', d4: 'P', d5: 'P', d6: 'A', io: '—', ot: '—' },
+        { name: 'Dinesh Sahni', skill: 'Plumber', d1: 'P', d2: 'P', d3: 'P', d4: 'A', d5: 'P', d6: 'P', io: '08:00 → —', ot: '1h' }
+      ],
+      // payroll
+      payRows: [
+        { name: 'Sunil K. Manjhi', days: 26, wage: '₹780', ot: '₹1,170', adv: '− ₹1,500', stat: '− ₹1,830', net: '₹18,450' },
+        { name: 'Ramesh Paswan', days: 24, wage: '₹820', ot: '—', adv: '—', stat: '− ₹1,770', net: '₹17,910' },
+        { name: 'Mohammad Irfan', days: 26, wage: '₹900', ot: '₹2,700', adv: '− ₹2,000', stat: '− ₹2,110', net: '₹21,990' },
+        { name: 'Anita Kumari', days: 25, wage: '₹590', ot: '—', adv: '− ₹1,000', stat: '− ₹1,330', net: '₹12,420' },
+        { name: 'Santosh Yadav', days: 22, wage: '₹610', ot: '₹610', adv: '—', stat: '− ₹1,210', net: '₹12,820' },
+        { name: 'Dinesh Sahni', days: 26, wage: '₹800', ot: '₹800', adv: '− ₹1,500', stat: '− ₹1,870', net: '₹18,230' },
+        { name: 'Meena Devi', days: 27, wage: '₹450', ot: '—', adv: '—', stat: '− ₹1,090', net: '₹11,060' }
+      ].map((r, i) => {
+        const paid = st.approved && i < st.paidCount;
+        const paying = st.approved && i === st.paidCount && st.paidCount < 7;
+        return { ...r,
+          stLabel: paid ? 'PAID ✓' : paying ? 'IMPS…' : st.approved ? 'QUEUED' : 'PENDING',
+          stBg: paid ? '#dcfce7' : 'transparent',
+          stFg: paid ? '#166534' : paying ? 'var(--color-accent-700)' : 'var(--color-neutral-500)',
+          stBd: paid ? '#22c55e' : paying ? 'var(--color-accent-400)' : 'var(--color-neutral-300)'
+        };
+      }),
+      approveLabel: st.approved ? (st.paidCount >= 7 ? '✓ Run complete — 38 paid' : `Paying… ${st.paidCount} of 38`) : 'Approve & pay 38 workers',
+      approveNote: st.approved ? (st.paidCount >= 7 ? 'Payout complete 10:43 IST. Slips sent via WhatsApp.' : 'IMPS batch running — do not close.') : 'Two-step approval · Accounts → Super Admin',
+      approveRun: () => {
+        if (this.state.approved) return;
+        this.setState({ approved: true, paidCount: 0 });
+        this._pay = setInterval(() => {
+          if (this.state.paidCount >= 7) { clearInterval(this._pay); return; }
+          this.setState({ paidCount: this.state.paidCount + 1 });
+        }, 380);
+      },
+      // ai
+      chat, draft: st.draft, setDraft: e => this.setState({ draft: e.target.value }),
+      onKey: e => { if (e.key === 'Enter' && this.state.draft.trim()) this.ask(this.state.draft.trim()); },
+      send: () => { if (this.state.draft.trim()) this.ask(this.state.draft.trim()); },
+      suggestions: [
+        'How many electricians are available in Patna?',
+        'Which district has the highest migration?',
+        'Predict manpower shortage for September.',
+        'Generate payroll for July.',
+        'Generate this week\'s attendance report.'
+      ].map(q => ({ q, go: () => this.ask(q) }))
+    };
+  }
+}
+</script>
+</body>
+</html>
