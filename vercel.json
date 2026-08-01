@@ -1,0 +1,9 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/app", "destination": "/Majdoor App.dc.html" },
+    { "source": "/login", "destination": "/Majdoor Login.dc.html" },
+    { "source": "/mobile", "destination": "/Majdoor Mobile.dc.html" },
+    { "source": "/brand", "destination": "/Majdoor Brand.dc.html" }
+  ]
+}

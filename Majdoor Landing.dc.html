@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/industry-d1842bf0-a190-4583-be1e-cf8ea1d043c2/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <script src="_ds/industry-d1842bf0-a190-4583-be1e-cf8ea1d043c2/_ds_bundle.js"></script>
+  <style>
+    body{margin:0;background:var(--color-bg);color:var(--color-text);font-family:var(--font-body)}
+    a{color:var(--color-accent-700);text-decoration:none}a:hover{color:var(--color-accent-900)}
+    @keyframes craneSwing{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(4deg)}}
+    @keyframes hookDrop{0%,100%{transform:translateY(0)}50%{transform:translateY(14px)}}
+    @keyframes walk{0%{transform:translateX(0)}100%{transform:translateX(520px)}}
+    @keyframes dash{to{stroke-dashoffset:-24}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+    body{font-variant-numeric:tabular-nums}
+    summary::-webkit-details-marker{display:none}
+    details summary .fplus{transition:transform .18s ease}
+    details[open] summary .fplus{transform:rotate(45deg)}
+  </style>
+</helmet>
+<div style="max-width:1200px;margin:0 auto;padding:0 40px">
+  <nav style="display:flex;align-items:center;justify-content:space-between;padding:22px 0;border-bottom:1px solid var(--color-neutral-300)">
+    <div style="display:flex;align-items:center;gap:12px">
+      <img src="assets/logo-mark-flat.png" alt="Majdoor" style="height:34px;display:block">
+      <img src="assets/wordmark-light-only.png" alt="MAJDOOR" style="height:22px;display:block">
+    </div>
+    <div style="display:flex;gap:26px;font-size:14px;align-items:center">
+      <a href="#how">How it works</a><a href="#industries">Industries</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a>
+      <a href="Majdoor%20Login.dc.html" class="btn btn-secondary" style="font-size:13px">Sign in</a>
+      <a href="Majdoor%20App.dc.html" class="btn btn-primary" style="font-size:13px">Open platform</a>
+    </div>
+  </nav>
+
+  <header style="display:grid;grid-template-columns:1.1fr .9fr;gap:56px;padding:88px 0 72px;align-items:start">
+    <div>
+      <div class="tag tag-outline" style="margin-bottom:22px">BIHAR WORKFORCE OPERATING SYSTEM · श्रमिक मंच</div>
+      <h1 style="font-family:var(--font-heading);font-weight:600;font-size:64px;line-height:1.04;margin:0 0 16px;letter-spacing:.01em">CONNECTING BIHAR'S WORKFORCE<br>WITH INDIA'S GROWTH</h1>
+      <div style="font-family:Montserrat,var(--font-body),sans-serif;font-weight:700;font-size:16px;letter-spacing:.12em;color:#232733;margin:0 0 20px">One Workforce. <span style="color:#1f7ae0">Limitless</span> <span style="color:#d97706">Possibilities.</span></div>
+      <p style="font-size:17px;line-height:1.6;color:var(--color-neutral-700);max-width:520px;margin:0 0 34px">One registry for every worker, agency and site. Verified profiles, GPS attendance, same-day payroll — from Kishanganj to Kaimur.</p>
+      <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+        <a href="Majdoor%20App.dc.html" class="btn btn-primary" style="padding:14px 28px;font-size:15px">Hire manpower →</a>
+        <a href="Majdoor%20Mobile.dc.html" class="btn btn-ghost" style="font-size:14px">Watch demo</a>
+      </div>
+      <div style="display:flex;gap:20px;margin-top:16px;font-size:13px;color:var(--color-neutral-600)">
+        <span>Are you a worker or agency? <a href="Majdoor%20Login.dc.html" style="text-decoration:underline;text-underline-offset:3px">Register free · पंजीकरण</a></span>
+      </div>
+      <div style="display:flex;gap:40px;margin-top:52px">
+        <div><div style="font-family:var(--font-heading);font-size:38px;font-weight:600">{{ statWorkers }}</div><div style="font-size:12px;letter-spacing:.1em;color:var(--color-neutral-600)">REGISTERED WORKERS</div></div>
+        <div><div style="font-family:var(--font-heading);font-size:38px;font-weight:600">{{ statAgencies }}</div><div style="font-size:12px;letter-spacing:.1em;color:var(--color-neutral-600)">AGENCIES</div></div>
+        <div><div style="font-family:var(--font-heading);font-size:38px;font-weight:600">{{ statDistricts }}</div><div style="font-size:12px;letter-spacing:.1em;color:var(--color-neutral-600)">DISTRICTS COVERED</div></div>
+        <div><div style="font-family:var(--font-heading);font-size:38px;font-weight:600">{{ statPayout }}</div><div style="font-size:12px;letter-spacing:.1em;color:var(--color-neutral-600)">WAGES PAID / MONTH</div></div>
+      </div>
+    </div>
+    <div class="blueprint" style="border:1px solid var(--color-accent-300);position:relative;padding:26px;background:var(--color-accent-100)">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <div style="font-size:11px;letter-spacing:.14em;color:var(--color-accent-700);margin-bottom:8px">FIG. 01 — SITE PLAN · PATNA METRO C-2</div>
+      <svg viewBox="0 0 560 340" style="width:100%;display:block" fill="none" stroke="var(--color-accent-700)" stroke-width="1.5">
+        <line x1="0" y1="300" x2="560" y2="300"></line>
+        <g><rect x="60" y="180" width="18" height="120"></rect><line x1="52" y1="300" x2="86" y2="300" stroke-width="3"></line>
+          <g style="transform-origin:69px 180px;animation:craneSwing 7s ease-in-out infinite">
+            <line x1="69" y1="180" x2="290" y2="150"></line><line x1="69" y1="180" x2="20" y2="172"></line>
+            <line x1="69" y1="120" x2="69" y2="180"></line><line x1="69" y1="120" x2="200" y2="163"></line><line x1="69" y1="120" x2="30" y2="170"></line>
+            <rect x="16" y="164" width="16" height="14" fill="var(--color-accent-300)"></rect>
+            <g style="animation:hookDrop 7s ease-in-out infinite"><line x1="240" y1="157" x2="240" y2="215"></line><rect x="226" y="215" width="28" height="18"></rect></g>
+          </g></g>
+        <rect x="330" y="200" width="90" height="100"></rect><rect x="440" y="230" width="70" height="70"></rect>
+        <line x1="330" y1="225" x2="420" y2="225"></line><line x1="330" y1="250" x2="420" y2="250"></line><line x1="330" y1="275" x2="420" y2="275"></line>
+        <line x1="0" y1="318" x2="560" y2="318" stroke-dasharray="10 14" style="animation:dash 1.6s linear infinite"></line>
+        <g style="animation:walk 16s linear infinite">
+          <g><circle cx="10" cy="272" r="5"></circle><line x1="10" y1="277" x2="10" y2="290"></line><line x1="10" y1="290" x2="5" y2="300"></line><line x1="10" y1="290" x2="15" y2="300"></line><line x1="10" y1="281" x2="3" y2="288"></line><line x1="10" y1="281" x2="17" y2="286"></line></g>
+          <g transform="translate(28,0)"><circle cx="10" cy="272" r="5"></circle><line x1="10" y1="277" x2="10" y2="290"></line><line x1="10" y1="290" x2="4" y2="300"></line><line x1="10" y1="290" x2="16" y2="300"></line><line x1="10" y1="281" x2="2" y2="287"></line><line x1="10" y1="281" x2="18" y2="287"></line></g>
+        </g>
+        <text x="330" y="192" font-size="11" fill="var(--color-accent-700)" stroke="none" font-family="Barlow Condensed" letter-spacing="2">BLOCK B — 214 WORKERS ON DUTY</text>
+      </svg>
+      <div style="display:flex;justify-content:space-between;font-size:11px;letter-spacing:.12em;color:var(--color-accent-700);margin-top:10px"><span>LIVE ATTENDANCE FEED</span><span>SCALE 1:500</span></div>
+    </div>
+  </header>
+
+  <section style="padding:0 0 64px">
+    <div style="display:flex;align-items:center;border-top:1px solid var(--color-neutral-300);border-bottom:1px solid var(--color-neutral-300)">
+      <div style="font-size:11px;letter-spacing:.16em;color:var(--color-neutral-500);padding:20px 32px 20px 0;border-right:1px solid var(--color-neutral-300);flex:none">DEPLOYED WITH</div>
+      <div style="display:flex;flex:1;justify-content:space-between;padding:20px 0 20px 32px;font-family:var(--font-heading);font-size:17px;letter-spacing:.12em;color:var(--color-neutral-600)">
+        <span>ADANI INFRA</span><span>L&amp;T</span><span>TATA PROJECTS</span><span>IRCON</span><span>NHAI</span><span>JSW STEEL</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" style="padding:64px 0;border-top:1px solid var(--color-neutral-300)">
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:36px;margin:0 0 34px;letter-spacing:.04em">HOW IT WORKS · कैसे काम करता है</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:32px;transition:box-shadow .18s ease,transform .18s ease" style-hover="box-shadow:var(--shadow-md);transform:translateY(-2px)">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-family:var(--font-heading);font-size:44px;color:var(--color-accent);font-weight:600">{{ s.n }}</div>
+          <div style="font-family:var(--font-heading);font-size:21px;letter-spacing:.06em;margin:8px 0 6px">{{ s.title }}</div>
+          <div style="font-size:14px;line-height:1.55;color:var(--color-neutral-700)">{{ s.body }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="industries" style="padding:64px 0;border-top:1px solid var(--color-neutral-300)">
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:36px;margin:0 0 34px;letter-spacing:.04em">INDUSTRIES SERVED</h2>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr)">
+      <sc-for list="{{ industries }}" as="ind" hint-placeholder-count="10">
+        <div style="border:1px solid var(--color-neutral-300);margin:-1px 0 0 -1px;padding:22px 18px;transition:background .15s" style-hover="background:var(--color-accent-100)">
+          <div style="font-family:var(--font-heading);font-size:18px;letter-spacing:.08em">{{ ind.name }}</div>
+          <div style="font-size:12px;color:var(--color-neutral-600);margin-top:4px">{{ ind.count }} workers deployed</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:64px 0;border-top:1px solid var(--color-neutral-300)">
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:36px;margin:0 0 34px;letter-spacing:.04em">FROM THE FIELD</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <sc-for list="{{ quotes }}" as="q" hint-placeholder-count="3">
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:26px">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-size:15px;line-height:1.6;font-style:italic">"{{ q.text }}"</div>
+          <div style="margin-top:18px;font-family:var(--font-heading);letter-spacing:.06em;font-size:16px">{{ q.name }}</div>
+          <div style="font-size:12px;color:var(--color-neutral-600)">{{ q.role }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="pricing" style="padding:64px 0;border-top:1px solid var(--color-neutral-300)">
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:36px;margin:0 0 34px;letter-spacing:.04em">PRICING</h2>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch">
+      <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+        <div class="blueprint" style="border:1px solid var(--color-neutral-400);position:relative;padding:30px;display:flex;flex-direction:column;background:{{ p.bg }};color:{{ p.fg }}">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="font-size:11px;letter-spacing:.16em">{{ p.kicker }}</div>
+          <div style="font-family:var(--font-heading);font-size:26px;letter-spacing:.06em;margin:6px 0 14px">{{ p.name }}</div>
+          <div style="height:72px;display:flex;flex-direction:column;justify-content:flex-end;margin-bottom:16px"><div style="font-family:var(--font-heading);font-size:42px;font-weight:600;line-height:1">{{ p.price }}</div><div style="font-size:12px;opacity:.75;margin-top:6px">{{ p.per }}</div></div>
+          <div style="display:flex;flex-direction:column;font-size:14px;flex:1">
+            <sc-for list="{{ p.features }}" as="f" hint-placeholder-count="4"><div style="border-top:1px solid color-mix(in oklab,currentColor 22%,transparent);padding:10px 0;opacity:.92">{{ f }}</div></sc-for>
+          </div>
+          <a href="Majdoor%20Login.dc.html" class="btn {{ p.ctaClass }}" style="margin-top:24px;text-align:center">{{ p.cta }}</a>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section id="faq" style="padding:64px 0 80px;border-top:1px solid var(--color-neutral-300)">
+    <h2 style="font-family:var(--font-heading);font-weight:600;font-size:36px;margin:0 0 34px;letter-spacing:.04em">FAQ</h2>
+    <div style="display:flex;flex-direction:column;max-width:760px">
+      <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
+        <details style="border-top:1px solid var(--color-neutral-300);padding:18px 0">
+          <summary style="font-family:var(--font-heading);font-size:19px;letter-spacing:.04em;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px">{{ f.q }}<span class="fplus" style="font-family:var(--font-body);font-size:20px;color:var(--color-accent-700);flex:none;line-height:1">+</span></summary>
+          <p style="font-size:14px;line-height:1.65;color:var(--color-neutral-700);margin:12px 0 0;max-width:640px;animation:fadeUp .22s ease">{{ f.a }}</p>
+        </details>
+      </sc-for>
+    </div>
+  </section>
+</div>
+<footer style="background:var(--color-accent-900);color:var(--color-accent-100);padding:56px 40px">
+  <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:24px">
+    <div style="display:flex;align-items:center;gap:16px">
+      <span style="display:flex;align-items:center;gap:18px"><img src="assets/logo-mark-t.png" alt="" style="height:72px;display:block"><img src="assets/wordmark-t.png" alt="Majdoor — One workforce. Limitless possibilities." style="height:64px;display:block"></span>
+      <div style="font-size:13px;opacity:.7">Connecting Bihar's workforce<br>with India's growth.</div>
+    </div>
+    <div style="display:flex;gap:30px;font-size:13px"><a href="Majdoor%20App.dc.html" style="color:var(--color-accent-100)">Platform</a><a href="Majdoor%20Mobile.dc.html" style="color:var(--color-accent-100)">Worker app</a><a href="Majdoor%20Login.dc.html" style="color:var(--color-accent-100)">Sign in</a></div>
+    <div style="font-size:12px;opacity:.55">© 2026 Majdoor Labs Pvt. Ltd. · Patna, Bihar</div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1440},&quot;darkFooter&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { w: 0, a: 0, d: 0, p: 0 };
+  componentDidMount() {
+    const t0 = performance.now(), dur = 1600;
+    const tick = (t) => {
+      const k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+      this.setState({ w: Math.round(248312 * e), a: Math.round(1240 * e), d: Math.round(38 * e), p: (41.2 * e) });
+      if (k < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  renderVals() {
+    const fmt = n => n.toLocaleString('en-IN');
+    return {
+      statWorkers: fmt(this.state.w), statAgencies: fmt(this.state.a), statDistricts: this.state.d,
+      statPayout: '₹' + this.state.p.toFixed(1) + ' Cr',
+      steps: [
+        { n: '01', title: 'REGISTER & VERIFY', body: 'Workers enrol with Aadhaar, skills and bank details. Police verification and duplicate detection run automatically.' },
+        { n: '02', title: 'MATCH & DEPLOY', body: 'Contractors post manpower demand by district and skill. Smart allocation matches verified workers to sites in hours.' },
+        { n: '03', title: 'ATTEND & PAY', body: 'GPS and face attendance at the gate. Payroll with PF, ESIC and advances settles straight to bank or UPI.' }
+      ],
+      industries: [
+        { name: 'CONSTRUCTION', count: '82,400' }, { name: 'AIRPORTS', count: '6,120' }, { name: 'MINING', count: '14,900' }, { name: 'STEEL', count: '11,300' }, { name: 'MANUFACTURING', count: '28,700' },
+        { name: 'RAILWAYS', count: '19,850' }, { name: 'WAREHOUSING', count: '22,140' }, { name: 'AGRICULTURE', count: '31,600' }, { name: 'INFRASTRUCTURE', count: '24,080' }, { name: 'POWER PLANTS', count: '7,222' }
+      ],
+      quotes: [
+        { text: 'We mobilised 400 verified bar-benders to our Purnea site in six days. Earlier this took two months of phone calls.', name: 'Rajiv Menon', role: 'Project Director, L&T Construction' },
+        { text: 'Pehli baar hazri aur paisa dono time par. Salary slip phone par aati hai.', name: 'Sunil Kumar Manjhi', role: 'Mason, Gaya · 4 yrs on Majdoor' },
+        { text: 'Our compliance score is visible to every client. PF and ESIC filings stopped being a nightmare.', name: 'Farzana Khatoon', role: 'Owner, Mithila Manpower Services' }
+      ],
+      plans: [
+        { kicker: 'FOR WORKERS', name: 'SHRAMIK', price: 'FREE', per: 'forever · हमेशा मुफ़्त', features: ['Verified digital profile', 'GPS & face attendance', 'Salary slips + document wallet', 'Nearby job alerts'], cta: 'Register free', ctaClass: 'btn-secondary', bg: 'transparent', fg: 'var(--color-text)' },
+        { kicker: 'FOR AGENCIES', name: 'THEKEDAR', price: '₹29', per: 'per worker / month', features: ['Worker & client management', 'Payroll with PF · ESIC · TDS', 'Advance & PPE tracking', 'Compliance scorecard'], cta: 'Start 30-day trial', ctaClass: 'btn-primary', bg: 'var(--color-accent-900)', fg: 'var(--color-accent-100)' },
+        { kicker: 'FOR ENTERPRISES', name: 'NIRMAN', price: 'CUSTOM', per: 'annual contract', features: ['Multi-site geo analytics', 'API + ERP integration', 'AI demand forecasting', 'Dedicated success manager'], cta: 'Talk to sales', ctaClass: 'btn-secondary', bg: 'transparent', fg: 'var(--color-text)' }
+      ],
+      faqs: [
+        { q: 'How are workers verified?', a: 'Aadhaar-based identity check, duplicate detection across the registry, optional police verification and skill certification from partner ITIs.' },
+        { q: 'Does attendance work without smartphones?', a: 'Yes. Supervisors can mark QR or face attendance for a whole gang from one device; workers get SMS confirmation in Hindi.' },
+        { q: 'Who pays the workers?', a: 'The employing agency or contractor. Majdoor computes the payout with overtime, advances, PF and ESIC, then triggers bank/UPI transfer with a digital slip.' },
+        { q: 'Is my data shared with the government?', a: 'Aggregated district-level statistics are shared with the Bihar labour department. Personal records are never sold or shared without consent.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
