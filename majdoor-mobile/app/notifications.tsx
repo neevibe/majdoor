@@ -121,7 +121,7 @@ export default function Notifications() {
                   <View style={{ flex: 1, gap: 3 }}>
                     <Row gap={6}>
                       <Tx
-                        variant={n.isRead ? 'bodyMedium' : 'bodyMedium'}
+                        variant="bodyMedium"
                         style={!n.isRead ? { fontFamily: t.fonts.bodyBold } : undefined}
                         numberOfLines={1}
                       >

@@ -39,3 +39,9 @@ Styling is a typed token system ported from the web design system (`src/theme/to
 ## Data layer
 
 `src/data/` — typed entities, a seeded mock API with simulated latency (mirroring every record on the web platform), React Query hooks, and Zustand stores. Swap `src/data/api.ts` for Supabase queries to go live; screens don't change.
+
+## Live demo
+
+Web preview of the mobile app: **https://majdoor-app.vercel.app** (native features fall back gracefully on web; use Expo Go for the full native experience).
+
+Redeploy with `./scripts/deploy-web.sh`.

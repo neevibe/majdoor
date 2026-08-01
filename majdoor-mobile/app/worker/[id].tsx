@@ -17,7 +17,6 @@ import * as haptics from '../../src/lib/haptics';
 type Tab = 'OVERVIEW' | 'DOCUMENTS' | 'ATTENDANCE' | 'SALARY';
 
 function Tile({ label, value, small }: { label: string; value: string; small?: boolean }) {
-  const t = useTheme();
   return (
     <Card style={{ flex: 1, gap: 6, paddingHorizontal: 12 }}>
       <Tx variant="kicker">{label}</Tx>
